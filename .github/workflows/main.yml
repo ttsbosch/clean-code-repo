@@ -16,11 +16,23 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+       
     - name: Set up CMake
       uses: threeal/cmake-action@main
 
     - name: Install dependencies
-      run: sudo apt-get install -y libgtest-dev
+      run: |
+        sudo apt-get install -y libgtest-dev
+        sudo apt-get install -y lcov
+        sudo apt-get install -y gcovr
+        
+        
+    - name: Lizard Runner
+      uses: Uno-Takashi/Lizard-Runner@v3
+      with:
+          path: "./"
+          CCN: "3"
+          
 
     - name: Configure CMake
       run: cmake -Bbuild -H.
@@ -32,3 +44,8 @@ jobs:
       run: |
         cd build
         ctest --output-on-failure
+    - name: Generate code coverage report
+      run: |
+        lcov --directory . --capture --output-file coverage.info
+        lcov --remove coverage.info '/usr/*' --output-file coverage.info
+        lcov --list coverage.info
