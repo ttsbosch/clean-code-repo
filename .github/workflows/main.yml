@@ -32,7 +32,7 @@ jobs:
       with:
           path: "./"
           CCN: "3"
-          exclude: "gtest"
+          exclude: "./build/*"
           
 
     - name: Configure CMake
