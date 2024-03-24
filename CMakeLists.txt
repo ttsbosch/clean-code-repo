@@ -18,7 +18,8 @@ enable_testing()
 
 add_executable(
   cleancode
-  hello_test.cpp
+  StringCalcualtor.cpp
+  StringCalculator.Tests.cpp
 )
 target_link_libraries(
   cleancode
