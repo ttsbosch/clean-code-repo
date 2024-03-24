@@ -1,4 +1,4 @@
-name: C++ CI with Google Test
+name: Build , Test and Cover
 
 on:
   push:
