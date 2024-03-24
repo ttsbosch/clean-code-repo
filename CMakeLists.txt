@@ -15,7 +15,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
 enable_testing()
-
+add_compile_options("--coverage")
 add_executable(
   cleancode
   StringCalculator.cpp
@@ -24,6 +24,7 @@ add_executable(
 target_link_libraries(
   cleancode
   GTest::gmock_main
+  gcov
 )
 
 include(GoogleTest)
